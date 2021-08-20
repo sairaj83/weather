@@ -57,7 +57,9 @@ class _CurrentLocationAnimState extends State<CurrentLocationAnim> {
               baseColor: Colors.grey.shade400,
               highlightColor: Colors.white,
               child: Container(
-                color: Colors.white,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5)),
                 height: 100,
                 width: MediaQuery.of(context).size.height * 0.15,
               ),

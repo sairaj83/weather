@@ -76,8 +76,10 @@ class _CurrentLocationWeaState extends State<CurrentLocationWea> {
               ],
             ),
             Container(
-              color: Colors.blue[200],
               height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.blue[200],
+                  borderRadius: BorderRadius.circular(5)),
               width: MediaQuery.of(context).size.height * 0.15,
               child: Image.network(
                   'http://openweathermap.org/img/wn/${widget.details!.weather![0].icon}@2x.png'),
@@ -94,13 +96,22 @@ class _CurrentLocationWeaState extends State<CurrentLocationWea> {
               width: MediaQuery.of(context).size.height * 0.30,
               color: Colors.black,
             ),
-            Text(
-              'Temperature',
-              style: GoogleFonts.roboto(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400),
-            )
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/wi-thermometer.png',
+                  height: 20,
+                  width: 20,
+                ),
+                Text(
+                  'Temperature',
+                  style: GoogleFonts.roboto(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
+                )
+              ],
+            ),
           ],
         ),
 
@@ -360,13 +371,20 @@ class _CurrentLocationWeaState extends State<CurrentLocationWea> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              'Wind',
-              style: GoogleFonts.roboto(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400),
-            ),
+            Row(children: [
+              Image.asset(
+                'assets/images/wi-strong-wind.png',
+                height: 20,
+                width: 20,
+              ),
+              Text(
+                'Wind',
+                style: GoogleFonts.roboto(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400),
+              )
+            ]),
             Container(
               height: 0.5,
               width: MediaQuery.of(context).size.height * 0.35,
@@ -453,68 +471,99 @@ class _CurrentLocationWeaState extends State<CurrentLocationWea> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 25,
-                  width: MediaQuery.of(context).size.height * 0.20,
-                  child: Center(
-                    child: Center(
-                      child: Text(
-                        '${DateFormat("hh:mm:ss a").format(DateTime.fromMillisecondsSinceEpoch(widget.details!.sys!.sunrise! * 1000))}',
-                        style: GoogleFonts.roboto(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.orange[200],
+                  borderRadius: BorderRadius.circular(5)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/images/wi-sunrise.png',
+                    height: 40,
+                    width: 40,
+                    fit: BoxFit.fill,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 25,
+                        width: MediaQuery.of(context).size.height * 0.15,
+                        child: Center(
+                          child: Center(
+                            child: Text(
+                              '${DateFormat("hh:mm:ss a").format(DateTime.fromMillisecondsSinceEpoch(widget.details!.sys!.sunrise! * 1000))}',
+                              style: GoogleFonts.roboto(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        height: 25,
+                        width: MediaQuery.of(context).size.height * 0.15,
+                        child: Center(
+                            child: Text(
+                          'Sun raise',
+                          style: GoogleFonts.roboto(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300),
+                        )),
+                      ),
+                    ],
                   ),
-                ),
-                Container(
-                  height: 25,
-                  width: MediaQuery.of(context).size.height * 0.20,
-                  child: Center(
-                      child: Text(
-                    'Sun raise',
-                    style: GoogleFonts.roboto(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300),
-                  )),
-                ),
-              ],
+                ],
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 25,
-                  width: MediaQuery.of(context).size.height * 0.20,
-                  child: Center(
-                    child: Text(
-                      '${DateFormat("hh:mm:ss a").format(DateTime.fromMillisecondsSinceEpoch(widget.details!.sys!.sunset! * 1000))}',
-                      style: GoogleFonts.roboto(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.black26,
+                  borderRadius: BorderRadius.circular(5)),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/images/wi-sunset.png',
+                    height: 40,
+                    width: 40,
+                    fit: BoxFit.fill,
                   ),
-                ),
-                Container(
-                  height: 25,
-                  width: MediaQuery.of(context).size.height * 0.20,
-                  child: Center(
-                    child: Text(
-                      'Sun Set',
-                      style: GoogleFonts.roboto(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300),
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 25,
+                        width: MediaQuery.of(context).size.height * 0.15,
+                        child: Center(
+                          child: Text(
+                            '${DateFormat("hh:mm:ss a").format(DateTime.fromMillisecondsSinceEpoch(widget.details!.sys!.sunset! * 1000))}',
+                            style: GoogleFonts.roboto(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 25,
+                        width: MediaQuery.of(context).size.height * 0.15,
+                        child: Center(
+                          child: Text(
+                            'Sun Set',
+                            style: GoogleFonts.roboto(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
